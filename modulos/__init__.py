@@ -1,0 +1,1 @@
+# Para tratar essa ásta como pacote pelo python.
