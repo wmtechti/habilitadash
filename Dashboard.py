@@ -48,7 +48,7 @@ try:
             df = df[df['treinador'].isin(filtro_treinadores)]
             processar = True
         else:
-            logging.error('value error - selecione um treinador', exc_info=True)
+            # logging.error('value error - selecione um treinador', exc_info=True)
             processar = False
             raise ValueError("Selecione um treinador.")
 
@@ -63,17 +63,17 @@ try:
             df_avaliacao_fisica = df_avaliacao_fisica[df_avaliacao_fisica['aluno'].isin(filtro_alunos)]
             processar = processar and True
         else:
-            logging.error('value error - selecione um aluno', exc_info=True)
+            # logging.error('value error - selecione um aluno', exc_info=True)
             processar = False
             raise ValueError("Selecione um aluno.")
 
     except ValueError as ve:
-        logging.error(ve, exc_info=True)
+        # logging.error(ve, exc_info=True)
         # Exibir a mensagem de erro do primeiro ValueError e continuar em caso de segundo ValueError
         st.error(str(ve))
         
     except Exception as e:
-        logging.error(e, exc_info=True)
+        # logging.error(e, exc_info=True)
         st.error(str(e))
         if isinstance(e, ValueError):
             # Ignorar outros ValueErrors
@@ -83,11 +83,11 @@ try:
             pass
 
     if not processar: 
-        logging.error('Aluno ou professor não selecionado. Saindo s execução!', exc_info=True)                
+        # logging.error('Aluno ou professor não selecionado. Saindo da execução!', exc_info=True)                
         sys.exit()
                 
     # 1. Tabelas      
-    logging.error('Seguindo na execução!', exc_info=True)        
+    # logging.error('Seguindo na execução!', exc_info=True)        
     df_nivel_questionario = fitoper.gera_df_nivel_questionario(df_avaliacao_fisica)
 
     df_nivel_testes_fisicos = fitoper.gera_df_nivel_testes_fisicos(df_avaliacao_fisica)
